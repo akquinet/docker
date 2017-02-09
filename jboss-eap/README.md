@@ -4,8 +4,7 @@ Bare distribution for JBoss EAP 7
 Current version is 7.0.3.GA
 
 # Build & Run
-It has been build with this command:
-
+It has been build with these command:
 	docker build -t jboss-eap .
 	docker tag jboss-eap jboss-eap:7.0.3.GA
 
@@ -18,4 +17,4 @@ It has been build with this command:
 	docker tag af9eafefd2ad mdahm/jboss-eap:7.0.3.GA
 	docker push mdahm/jboss-eap
 	
-	docker run mdahm/jboss-eap
+	docker run --name jboss-eap mdahm/jboss-eap
