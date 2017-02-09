@@ -11,9 +11,16 @@ ENV	TEMP_FILE				/tmp/mod_cluster.tar.gz
 ENV HTTPD_ROOT 				/opt/jboss/httpd
 ENV MOD_CLUSTER_HOME 		${HTTPD_ROOT}/${MOD_CLUSTER_VERSION}
 
-RUN apt-get -y update && apt-get -y install curl
-RUN curl ${BASE_URL}/${MOD_CLUSTER_VERSION}/${LINUX_ARCH}/${DIST_TAR} -o ${TEMP_FILE} \
-	&& tar xfz ${TEMP_FILE} && rm -f ${TEMP_FILE}
+RUN apt-get -y update && apt-get -y upgrade && apt-get -y install curl
+RUN apt-get install libapr1
+
+# Either use local file
+COPY ${DIST_TAR} ${TEMP_FILE}
+
+# OR download current version
+## RUN curl ${BASE_URL}/${MOD_CLUSTER_VERSION}/${LINUX_ARCH}/${DIST_TAR} -o ${TEMP_FILE}
+
+RUN tar xfz ${TEMP_FILE} && rm -f ${TEMP_FILE}
 
 EXPOSE 80
 
