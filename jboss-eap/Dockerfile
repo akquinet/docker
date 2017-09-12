@@ -2,13 +2,13 @@
 FROM openjdk:8
 
 # Use which version?
-ENV EAP_VERSION 	7.0.3.GA
+ENV EAP_VERSION 	7.0.7.GA
 
-ENV JBOSS_LATEST 	jboss-eap
+ENV JBOSS_EAP 	jboss-eap
 ENV JBOSS_VERSION 	jboss-eap-${EAP_VERSION}
 ENV JBOSS_ROOT 		/opt/jboss
 
-ENV JBOSS_HOME 		${JBOSS_ROOT}/${JBOSS_LATEST}
+ENV JBOSS_HOME 		${JBOSS_ROOT}/${JBOSS_EAP}
 ENV JBOSS_ZIP 		${JBOSS_VERSION}.zip
 ENV JBOSS_EXEC		${JBOSS_HOME}/bin/standalone.sh
 
@@ -19,7 +19,7 @@ RUN mkdir -p ${JBOSS_ROOT}
 COPY xa? ${JBOSS_ROOT}/
 
 RUN cd ${JBOSS_ROOT} && cat xa? > ${JBOSS_ZIP} && unzip ${JBOSS_ZIP} \
-	&& ln -s ${JBOSS_VERSION} ${JBOSS_LATEST} \
+	&& ln -s ${JBOSS_VERSION} ${JBOSS_EAP} \
 	&& chmod 755 ${JBOSS_HOME}/bin/*.sh \
 	&& rm -f ${JBOSS_ZIP} xa?
 
