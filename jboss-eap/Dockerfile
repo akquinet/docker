@@ -2,9 +2,9 @@
 FROM openjdk:8
 
 # Use which version?
-ENV EAP_VERSION 	7.0.7.GA
+ENV EAP_VERSION 	7.1.1.GA
 
-ENV JBOSS_EAP 	jboss-eap
+ENV JBOSS_EAP 		jboss-eap
 ENV JBOSS_VERSION 	jboss-eap-${EAP_VERSION}
 ENV JBOSS_ROOT 		/opt/jboss
 
